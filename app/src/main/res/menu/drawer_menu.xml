@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Sports">
+        <menu>
+            <item
+                android:id="@+id/sport1"
+                android:icon="@drawable/ic_baseline_sports_basketball_24"
+                android:title="Sport1" />
+            <item
+                android:id="@+id/sport2"
+                android:icon="@drawable/ic_baseline_sports_basketball_24"
+                android:title="Sport 2" />
+        </menu>
+    </item>
+    <item
+
+        android:title="Countries">
+        <menu>
+            <item
+                android:id="@+id/country1"
+                android:icon="@drawable/ic_baseline_flag_24"
+                android:title="country 1" />
+            <item
+                android:id="@+id/country2"
+                android:icon="@drawable/ic_baseline_flag_24"
+                android:title="country 2" />
+        </menu>
+    </item>
+
+</menu>
