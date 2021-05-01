@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "495235102139",
+    "project_id": "androidproj-9ef3f",
+    "storage_bucket": "androidproj-9ef3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495235102139:android:432255398c247e5a93409e",
+        "android_client_info": {
+          "package_name": "com.example.drawerfragment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "495235102139-33r01n66kea36l15n4bvlq4rsat87ltg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_9r-N3-33o4uh57eKSIHGK73uMUZ0P9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "495235102139-33r01n66kea36l15n4bvlq4rsat87ltg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
