@@ -2,4 +2,30 @@
     <string name="app_name">Drawer Fragment</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="DBname">sportsDB</string>
+    <string name="newSport">Insert New Sport</string>
+    <string name="deleteSport">Delete existing sport</string>
+    <string name="updateSprort">Update existing sport</string>
+    <string name="showSports">Show Sporrts By</string>
+    <string name="sportName">Sport Name</string>
+    <string name="sportType">Sport Type</string>
+    <string name="newAthlete">Insert New Athlete</string>
+    <string name="deleteAthlete">Delete existing athlete</string>
+    <string name="updateAthlete">Update existing athlete</string>
+    <string name="showAthletes">Show Athletes By</string>
+    <string name="athleteSport">Athlete\'s sport</string>
+    <string name="athleteNationality">Athlete\'s nationality</string>
+    <string name="newTeam">Insert new Team</string>
+    <string name="deleteTeam">Delete existing team</string>
+    <string name="updateTeam">Update existing team</string>
+    <string name="showTeams">Show Teams By</string>
+    <string name="teamSport">Team\'s Sport</string>
+    <string name="teamNationality">Team\'s Nationality</string>
+    <string name="teamsEstablishment">Team\'s Establishment</string>
+
+
+
+
+
+
 </resources>

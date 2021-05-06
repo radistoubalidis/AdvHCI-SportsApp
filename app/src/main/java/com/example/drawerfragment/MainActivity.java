@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.room.Room;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+
+    public static SportsDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,27 +45,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // load default fragment
         fragmentManager = getSupportFragmentManager();
+        db = Room.databaseBuilder(getApplicationContext(),SportsDatabase.class, String.valueOf(R.string.DBname)).allowMainThreadQueries().build();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container_fragment,new MainFragment());
+        fragmentTransaction.add(R.id.container_fragment,new SportsFragmentMain());
         fragmentTransaction.commit();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.sport1){
+        if (item.getItemId() == R.id.sports_management){
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment,new MainFragment());
+            fragmentTransaction.replace(R.id.container_fragment,new SportsFragmentMain());
             fragmentTransaction.commit();
         }
-        if (item.getItemId() == R.id.sport2){
+        if (item.getItemId() == R.id.sports){
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment,new FragmentSecond());
+            fragmentTransaction.replace(R.id.container_fragment,new SportsFragmentSecond());
+            fragmentTransaction.commit();
+        }
+        if(item.getItemId() == R.id.athletes_management){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment,new AthletesFragmentMain());
+            fragmentTransaction.commit();
+        }
+        if(item.getItemId() == R.id.athletes){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment,new AthletesFragmentSecond());
+            fragmentTransaction.commit();
+        }
+        if(item.getItemId() == R.id.teams_management){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment,new TeamFragmentMain());
+            fragmentTransaction.commit();
+        }
+        if(item.getItemId() == R.id.teams){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment,new TeamFragmentSecond());
             fragmentTransaction.commit();
         }
 
 
         return true;
     }
+
 }
