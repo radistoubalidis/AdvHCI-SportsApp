@@ -5,7 +5,9 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
 @Entity (tableName = "athlites", //Ο πίνακας θα διαχειριστεί στον κώδικα ως athlites
-        primaryKeys = {"athlete_id, athlete_sport_id"},
+
+        primaryKeys = {"athlete_id", "athlete_sport_id"},
+
         foreignKeys = {
                 @ForeignKey(entity = Sports.class,
                         parentColumns = "sport_id",

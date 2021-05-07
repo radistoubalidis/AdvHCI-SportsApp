@@ -4,27 +4,42 @@
         android:title="Sports">
         <menu>
             <item
-                android:id="@+id/sport1"
+                android:id="@+id/sports_management"
                 android:icon="@drawable/ic_baseline_sports_basketball_24"
-                android:title="Sport1" />
+                android:title="Sports Management" />
             <item
-                android:id="@+id/sport2"
+                android:id="@+id/sports"
                 android:icon="@drawable/ic_baseline_sports_basketball_24"
-                android:title="Sport 2" />
+                android:title="Show Sports" />
         </menu>
     </item>
     <item
 
-        android:title="Countries">
+        android:title="Athletes">
         <menu>
             <item
-                android:id="@+id/country1"
+                android:id="@+id/athletes_management"
                 android:icon="@drawable/ic_baseline_flag_24"
-                android:title="country 1" />
+                android:title="Athletes Management" />
             <item
-                android:id="@+id/country2"
+                android:id="@+id/athletes"
                 android:icon="@drawable/ic_baseline_flag_24"
-                android:title="country 2" />
+                android:title="Show Athletes" />
+        </menu>
+    </item>
+    <item
+        android:title="Teams">
+        <menu>
+            <item
+                android:id="@+id/teams_management"
+                android:icon="@drawable/ic_baseline_group_24"
+                android:title="Team Management"
+                />
+            <item
+                android:id="@+id/teams"
+                android:icon="@drawable/ic_baseline_group_24"
+                android:title="Show Teams"
+                />
         </menu>
     </item>
 
