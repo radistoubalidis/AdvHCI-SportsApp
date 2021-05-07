@@ -5,16 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SportsFragmentMain">
+    tools:context=".UpdateTeamFragment">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView9"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:text="Sports Management"
+        android:text="@string/updateTeam"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="24sp"
@@ -23,41 +23,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
-        android:id="@+id/action1"
+    <EditText
+        android:id="@+id/teamsSportName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/newSport"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="change team's sport here.."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <Button
-        android:id="@+id/action2"
+    <EditText
+        android:id="@+id/teamName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/deleteSport"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="change team's name here.."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action1" />
+        app:layout_constraintTop_toBottomOf="@+id/teamsSportName" />
 
-    <Button
-        android:id="@+id/action3"
+    <EditText
+        android:id="@+id/teamStadiumName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/updateSprort"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="change team's stadium here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action2" />
+        app:layout_constraintTop_toBottomOf="@+id/teamName" />
+
+
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teamStadiumName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,9 @@
     <string name="teamSport">Team\'s Sport</string>
     <string name="teamNationality">Team\'s Nationality</string>
     <string name="teamsEstablishment">Team\'s Establishment</string>
-
+    <string name="insert">Insert</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
 
 
 

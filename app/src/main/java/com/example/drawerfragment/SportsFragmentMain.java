@@ -12,9 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import static com.example.drawerfragment.R.id.insertSportFragment;
 
-public class SportsFragmentMain extends Fragment implements View.OnClickListener{
+public class SportsFragmentMain extends Fragment{
 
     View view;
     FragmentManager fragmentManager;
@@ -29,7 +28,7 @@ public class SportsFragmentMain extends Fragment implements View.OnClickListener
             @Override
             public void onClick(View v) {
 //                System.out.println(v.getId());
-                fragmentManager = getChildFragmentManager();
+                fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container_fragment,new InsertSportFragment());
                 fragmentTransaction.commit();
@@ -40,16 +39,24 @@ public class SportsFragmentMain extends Fragment implements View.OnClickListener
 
             @Override
             public void onClick(View v) {
-                System.out.println(v.getId());
+//                System.out.println("asdf");
+                fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container_fragment,new DeleteSportFragment());
+                fragmentTransaction.commit();
             }
         });
-//        Button action3 = (Button) view.findViewById(R.id.action3);
-//        action3.setOnClickListener(this);
+        Button action3 = (Button) view.findViewById(R.id.action3);
+        action3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container_fragment,new UpdateSportFragment());
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 }

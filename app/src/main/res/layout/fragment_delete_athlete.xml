@@ -5,16 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SportsFragmentMain">
-
+    tools:context=".DeleteAthleteFragment">
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:text="Sports Management"
+        android:text="@string/deleteAthlete"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="24sp"
@@ -23,41 +22,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
-        android:id="@+id/action1"
+    <EditText
+        android:id="@+id/athletefirstName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/newSport"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="type first name here.."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <Button
-        android:id="@+id/action2"
+    <EditText
+        android:id="@+id/athletelastName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/deleteSport"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="type last name here.."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action1" />
+        app:layout_constraintTop_toBottomOf="@+id/athletefirstName" />
 
     <Button
-        android:id="@+id/action3"
-        android:layout_width="0dp"
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/updateSprort"
+        android:layout_marginTop="32dp"
+        android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action2" />
+        app:layout_constraintTop_toBottomOf="@+id/athletelastName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
