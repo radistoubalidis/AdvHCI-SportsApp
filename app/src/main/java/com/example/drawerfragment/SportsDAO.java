@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -14,7 +15,7 @@ public interface SportsDAO {
     public List<Sports> getSports();
 
     @Insert
-    public void addSport(Sports sport);
+    public  void addSport(Sports sport);
 
     @Delete
     public void deleteSport(Sports sport );
