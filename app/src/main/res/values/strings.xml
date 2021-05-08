@@ -12,7 +12,7 @@
     <string name="newAthlete">Insert New Athlete</string>
     <string name="deleteAthlete">Delete existing athlete</string>
     <string name="updateAthlete">Update existing athlete</string>
-    <string name="showAthletes">Show Athletes By</string>
+    <string name="showAthletes">Show Athletes</string>
     <string name="athleteSport">Athlete\'s sport</string>
     <string name="athleteNationality">Athlete\'s nationality</string>
     <string name="newTeam">Insert new Team</string>
