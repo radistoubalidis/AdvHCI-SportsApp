@@ -18,7 +18,7 @@ public class AthletesFragmentSecond extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_athletes_second,container,false);
         TextView athletesTV = view.findViewById(R.id.athletes);
-        List<Athletes> athletes = MainActivity.db.athletesDAO().getAthletes();
+        List<Athletes> athletes = setNewAthletes();
         List<Sports> sports = MainActivity.db.sportsDAO().getSports();
         String result="";
         for(Athletes a:athletes){
@@ -28,9 +28,13 @@ public class AthletesFragmentSecond extends Fragment {
                     sport=s.getName();
                 }
             }
-            result+= "\nID: "+a.getID()+"\nSport: "+sport+"\nFull name: "+a.getName()+" "+a.getSurname()+"\nFrom: "+a.getTown()+","+a.getNationality();
+            result+= "\nID: "+a.getID()+"\nSport: "+sport+"\nFull name: "+a.getName()+" "+a.getSurname()+"\nFrom: "+a.getTown()+", "+a.getNationality()+"\n";
         }
         athletesTV.setText(result);
         return view;
+    }
+
+    public static List<Athletes> setNewAthletes(){
+        return MainActivity.db.athletesDAO().getAthletes();
     }
 }

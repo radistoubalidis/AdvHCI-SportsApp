@@ -26,9 +26,9 @@ public class ShowSportsType extends Fragment {
         String individuals = "";
         for(Sports s: sports){
             if(s.getType().equals("Individual")){
-                individuals+= "\nSport ID:"+s.getID()+"\nName:"+s.getName();
+                individuals+= "\nSport ID:"+s.getID()+"\nName:"+s.getName()+"\n";
             }else{
-                teams+= "\nSport ID:"+s.getID()+"\nName:"+s.getName();
+                teams+= "\nSport ID:"+s.getID()+"\nName:"+s.getName()+"\n";
             }
         }
         teamView.setText(teams);

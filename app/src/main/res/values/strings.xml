@@ -18,10 +18,10 @@
     <string name="newTeam">Insert new Team</string>
     <string name="deleteTeam">Delete existing team</string>
     <string name="updateTeam">Update existing team</string>
-    <string name="showTeams">Show Teams By</string>
+    <string name="showTeams">Show Teams</string>
     <string name="teamSport">Team\'s Sport</string>
     <string name="teamNationality">Team\'s Nationality</string>
-    <string name="teamsEstablishment">Team\'s Establishment</string>
+    <string name="teamsName">Team\'s Name</string>
     <string name="insert">Insert</string>
     <string name="delete">Delete</string>
     <string name="update">Update</string>

@@ -22,4 +22,5 @@ public interface SportsDAO {
 
     @Update
     public void updateSport(Sports sport);
+
 }

@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 @Entity
 public class Sports {
     @PrimaryKey
@@ -40,4 +42,12 @@ public class Sports {
     public void setType(String type) {
         Type = type;
     }
+
+    public int findByName(String name){
+        if(name == this.getName())
+            return this.getID();
+        else
+            return 0;
+    }
+
 }

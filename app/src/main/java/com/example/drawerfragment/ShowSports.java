@@ -30,7 +30,7 @@ public class ShowSports extends Fragment {
         for(Sports s: sports){
             int id = s.getID();
             String name = s.getName();
-            result+= "\nId:"+id+"\nName:"+name;
+            result+= "\nId:"+id+"\nName:"+name+"\n";
         }
         tv.setText(result);
         return view;
