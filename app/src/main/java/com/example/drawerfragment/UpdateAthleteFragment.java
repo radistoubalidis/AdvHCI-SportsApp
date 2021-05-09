@@ -41,26 +41,28 @@ public class UpdateAthleteFragment extends Fragment {
                             updateAthlete = a;
                             break;
                         }
-                    }
-                    for(Sports s:sports){
-                        if(s.getName().equals(athleteSport.getText().toString())){
-                            sid = s.getID();
-                            break;
+                        for(Sports s:sports){
+                            if(s.getName().equals(athleteSport.getText().toString())){
+                                sid = s.getID();
+                                break;
+                            }
+                        }
+                        if(sid!=0) {
+                            System.out.println(sid);
+                            a.setSID(sid);
+                            a.setName(athleteFirstName.getText().toString());
+                            a.setSurname(athleteLastName.getText().toString());
+                            a.setNationality(athleteNat.getText().toString());
+                            a.setTown(athleteHometown.getText().toString());
+                            System.out.println(updateAthlete.getSID()+updateAthlete.getName()+updateAthlete.getSurname()+updateAthlete.getNationality()+updateAthlete.getTown());
+                            MainActivity.db.athletesDAO().updateAthlete(a);
+                            Toast.makeText(getActivity(), "Athlete Updated!", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(getActivity(), "Something went wrong please try again!", Toast.LENGTH_LONG).show();
                         }
                     }
-                    if(sid!=0) {
-                        System.out.println(sid);
-                        updateAthlete.setSID(sid);
-                        updateAthlete.setName(athleteFirstName.getText().toString());
-                        updateAthlete.setSurname(athleteLastName.getText().toString());
-                        updateAthlete.setNationality(athleteNat.getText().toString());
-                        updateAthlete.setTown(athleteHometown.getText().toString());
-//                    System.out.println(updateAthlete.getSID()+updateAthlete.getName()+updateAthlete.getSurname()+updateAthlete.getNationality()+updateAthlete.getTown());
-                        MainActivity.db.athletesDAO().updateAthlete(updateAthlete);
-                        Toast.makeText(getActivity(), "Athlete Updated!", Toast.LENGTH_LONG).show();
-                    }else{
-                        Toast.makeText(getActivity(), "Something went wrong please try again!", Toast.LENGTH_LONG).show();
-                    }
+
+
                 }catch (Exception e){
                     throw new NumberFormatException();
                 }

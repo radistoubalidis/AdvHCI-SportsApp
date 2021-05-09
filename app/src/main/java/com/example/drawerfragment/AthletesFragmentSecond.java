@@ -18,12 +18,13 @@ public class AthletesFragmentSecond extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_athletes_second,container,false);
         TextView athletesTV = view.findViewById(R.id.athletes);
-        List<Athletes> athletes = setNewAthletes();
-        List<Sports> sports = MainActivity.db.sportsDAO().getSports();
+        for(Athletes a:setNewAthletes()){
+            System.out.println(a.getName()+a.getSurname());
+        }
         String result="";
-        for(Athletes a:athletes){
+        for(Athletes a:setNewAthletes()){
             String sport = "";
-            for(Sports s:sports){
+            for(Sports s:MainActivity.db.sportsDAO().getSports()){
                 if(s.getID() == a.getSID()){
                     sport=s.getName();
                 }
