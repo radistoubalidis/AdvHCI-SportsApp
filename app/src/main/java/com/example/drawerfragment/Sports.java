@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 import java.util.List;
 
-@Entity
+@Entity(tableName="sports")
 public class Sports {
     @PrimaryKey
     @ColumnInfo ( name = "sport_id")/*Θα χρησιμοποιηθεί το sport_id στον κώδικα και όχι το ID.

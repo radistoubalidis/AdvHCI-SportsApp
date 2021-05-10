@@ -19,6 +19,9 @@ public interface TeamDAO {
     @Delete
     public void deleteTeam(Team team);
 
-    @Update
-    public void updateTeam(Team team);
+    @Query("update omades SET t_sport_id=:sid,team_name=:name,team_stadium=:stadium,team_town=:town,team_national=:nat where team_id=:id")
+    public void updateTeam(int sid,String name,String stadium,String town,String nat,int id);
+
+    @Query("select * from omades where t_sport_id= :sid")
+    public List<Team> returnTeams(int sid);
 }

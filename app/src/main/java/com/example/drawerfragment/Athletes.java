@@ -92,4 +92,7 @@ public class Athletes {
             return false;
 
     }
+    public String toString(){
+        return this.getID()+","+this.getSID()+","+this.getName()+","+this.getSurname()+","+this.getNationality()+","+this.getTown();
+    }
 }

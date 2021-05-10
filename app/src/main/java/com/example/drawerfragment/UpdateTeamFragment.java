@@ -1,11 +1,15 @@
 package com.example.drawerfragment;
 
+import android.database.sqlite.SQLiteConstraintException;
+import android.database.sqlite.SQLiteException;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,36 +30,42 @@ public class UpdateTeamFragment extends Fragment {
         final EditText teamStadium = (EditText) view.findViewById(R.id.teamStadiumName);
         final EditText teamNat = (EditText) view.findViewById(R.id.teamNat);
         final EditText teamHometown = (EditText) view.findViewById(R.id.teamHometown);
+
         update.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                List<Team> teams = MainActivity.db.teamDao().getTeams();
-                List<Sports> sports = MainActivity.db.sportsDAO().getSports();
                 try {
-                    int id = Integer.parseInt(tid.getText().toString());
-                    Team updateTeam = new Team();
-                    for(Team t:teams){
-                        if(id == t.getID()){
-                            updateTeam = t;
+                    int id= Integer.parseInt(tid.getText().toString());
+                    for (Team t : MainActivity.db.teamDao().getTeams()) {
+                        if (t.getID() == id){
+                            System.out.println(t);
+                            int sportID = 0;
+                            for(Sports s: MainActivity.db.sportsDAO().getSports()){
+                                if(s.getName().equals(teamSport.getText().toString())){
+                                    sportID = s.getID();
+                                    break;
+                                }
+                            }
+                            if(sportID!=0){
+                                t.setID(id);
+                                t.setTID(sportID);
+                                t.setName(teamName.getText().toString());
+                                t.setStadium(teamStadium.getText().toString());
+                                t.setNational(teamNat.getText().toString());
+                                t.setTown(teamHometown.getText().toString());
+                                MainActivity.db.teamDao().updateTeam(t.getTID(),t.getName(),t.getStadium(),t.getTown(),t.getNational(),id);
+                                Toast.makeText(getActivity(),"Team Updated!", Toast.LENGTH_LONG).show();
+                                for(Team te:MainActivity.db.teamDao().getTeams()){
+                                    System.out.println(te);
+                                }
+                            }else{
+                                Toast.makeText(getActivity(),"Something went wrong please try again!", Toast.LENGTH_LONG).show();
+                            }
                             break;
                         }
                     }
-                    int sid = 0;
-                    for(Sports s:sports){
-                        if(s.getName().equals(teamSport.getText().toString())){
-                            sid = s.getID();
-                        }
-                    }
-                    if(sid!=0){
-                        updateTeam.setTID(sid);
-                        updateTeam.setName(teamName.getText().toString());
-                        updateTeam.setStadium(teamStadium.getText().toString());;
-                        updateTeam.setNational(teamNat.getText().toString());;
-                        updateTeam.setTown(teamHometown.getText().toString());;
-                        System.out.println(updateTeam.getID()+updateTeam.getName());
-                    }
-                }catch(NumberFormatException e){
-                    throw new NumberFormatException();
+                }catch(Exception e){
+                    throw e;
                 }
             }
         });

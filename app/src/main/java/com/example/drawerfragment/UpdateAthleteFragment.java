@@ -27,46 +27,44 @@ public class UpdateAthleteFragment extends Fragment {
         final EditText athleteLastName = view.findViewById(R.id.athletesurname);
         final EditText athleteNat = view.findViewById(R.id.athleteNationality);
         final EditText athleteHometown = view.findViewById(R.id.athleteHometown);
+        for(Athletes at:MainActivity.db.athletesDAO().getAthletes()){
+            System.out.println(at);
+        }
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    int id = Integer.parseInt(athleteID.getText().toString());
-                    List<Sports> sports = MainActivity.db.sportsDAO().getSports();
-                    List<Athletes> athletes = MainActivity.db.athletesDAO().getAthletes();
-                    Athletes updateAthlete = new Athletes();
-                    int sid = 0;
-                    for (Athletes a : athletes) {
-                        if(id == a.getID()){
-                            updateAthlete = a;
+                    int aid = Integer.parseInt(athleteID.getText().toString());
+                    for (Athletes a : MainActivity.db.athletesDAO().getAthletes()) {
+                        if (a.getID() == aid){
+                            int sportID = 0;
+                            for(Sports s:MainActivity.db.sportsDAO().getSports()){
+                                if(s.getName().equals(athleteSport.getText().toString())){
+                                    sportID = s.getID();
+                                    break;
+                                }
+                            }
+                            if(sportID != 0) {
+                                a.setID(aid);
+                                a.setSID(sportID);
+                                a.setName(athleteFirstName.getText().toString());
+                                a.setSurname(athleteLastName.getText().toString());
+                                a.setNationality(athleteNat.getText().toString());
+                                a.setTown(athleteHometown.getText().toString());
+                                MainActivity.db.athletesDAO().updateAthlete(sportID,a.getName(),a.getSurname(),a.getTown(),a.getNationality(),aid);
+                                Toast.makeText(getActivity(),"Athlete Updated!", Toast.LENGTH_LONG).show();
+                                for(Athletes at:MainActivity.db.athletesDAO().getAthletes()){
+                                    System.out.println(at);
+                                }
+                            }else{
+                                Toast.makeText(getActivity(),"Something went wrong please try again!", Toast.LENGTH_LONG).show();
+                            }
                             break;
                         }
-                        for(Sports s:sports){
-                            if(s.getName().equals(athleteSport.getText().toString())){
-                                sid = s.getID();
-                                break;
-                            }
-                        }
-                        if(sid!=0) {
-                            System.out.println(sid);
-                            a.setSID(sid);
-                            a.setName(athleteFirstName.getText().toString());
-                            a.setSurname(athleteLastName.getText().toString());
-                            a.setNationality(athleteNat.getText().toString());
-                            a.setTown(athleteHometown.getText().toString());
-                            System.out.println(updateAthlete.getSID()+updateAthlete.getName()+updateAthlete.getSurname()+updateAthlete.getNationality()+updateAthlete.getTown());
-                            MainActivity.db.athletesDAO().updateAthlete(a);
-                            Toast.makeText(getActivity(), "Athlete Updated!", Toast.LENGTH_LONG).show();
-                        }else{
-                            Toast.makeText(getActivity(), "Something went wrong please try again!", Toast.LENGTH_LONG).show();
-                        }
                     }
-
-
-                }catch (Exception e){
-                    throw new NumberFormatException();
+                }catch(NumberFormatException e){
+                    throw  e;
                 }
-
             }
         });
 

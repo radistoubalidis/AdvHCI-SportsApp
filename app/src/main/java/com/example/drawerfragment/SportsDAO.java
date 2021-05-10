@@ -23,4 +23,7 @@ public interface SportsDAO {
     @Update
     public void updateSport(Sports sport);
 
+    @Query("select sport_name from sports")
+    public String [] returnSportsNames();
+
 }

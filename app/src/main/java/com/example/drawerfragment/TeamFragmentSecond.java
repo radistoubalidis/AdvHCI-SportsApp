@@ -16,11 +16,12 @@ import androidx.fragment.app.FragmentTransaction;
 public class TeamFragmentSecond extends Fragment {
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;;
+    TextView tv;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teams_second,container,false);
-        TextView tv = view.findViewById(R.id.textView11);
+        tv = view.findViewById(R.id.textView11);
         String result = "";
         for(Team t:MainActivity.db.teamDao().getTeams()){
             String sport ="";
