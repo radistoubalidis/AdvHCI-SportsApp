@@ -14,7 +14,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/showAthletes"
+        android:text="show athletes by"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="24sp"
@@ -24,26 +24,38 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/action1"
-        android:layout_width="0dp"
+        android:id="@+id/showAll"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/athleteNationality"
+        android:text="show all"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/action2"
-        android:layout_width="0dp"
+        android:id="@+id/byNat"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/athleteSport"
+        android:text="by nationality"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action1" />
+        app:layout_constraintTop_toBottomOf="@+id/showAll" />
+
+    <Button
+        android:id="@+id/bySport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="by sport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/byNat" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

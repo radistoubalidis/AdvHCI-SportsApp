@@ -4,7 +4,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+import java.util.List;
+
+@Entity(tableName="sports")
 public class Sports {
     @PrimaryKey
     @ColumnInfo ( name = "sport_id")/*Θα χρησιμοποιηθεί το sport_id στον κώδικα και όχι το ID.
@@ -40,4 +42,12 @@ public class Sports {
     public void setType(String type) {
         Type = type;
     }
+
+    public int findByName(String name){
+        if(name == this.getName())
+            return this.getID();
+        else
+            return 0;
+    }
+
 }

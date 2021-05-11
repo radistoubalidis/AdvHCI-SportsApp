@@ -91,4 +91,14 @@ public class Team {
     public void setEstablishment(String establishment) {
         Establishment = establishment;
     }
+
+    public String toString() {
+        String sport ="";
+        for(Sports s:MainActivity.db.sportsDAO().getSports()){
+            if(s.getID()==this.getTID()){
+                sport = s.getName();
+            }
+        }
+        return this.getID()+","+sport+","+this.getStadium()+","+this.getName()+","+this.getNational()+","+this.getTown();
+    }
 }

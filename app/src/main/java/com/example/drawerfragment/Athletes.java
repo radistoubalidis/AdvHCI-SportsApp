@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
+import java.util.List;
+
 @Entity (tableName = "athlites", //Ο πίνακας θα διαχειριστεί στον κώδικα ως athlites
 
         primaryKeys = {"athlete_id", "athlete_sport_id"},
@@ -81,5 +83,16 @@ public class Athletes {
 
     public void setNationality(String nationality) {
         Nationality = nationality;
+    }
+
+    public boolean findByID(int id){
+        if(id==this.getID())
+            return true;
+        else
+            return false;
+
+    }
+    public String toString(){
+        return this.getID()+","+this.getSID()+","+this.getName()+","+this.getSurname()+","+this.getNationality()+","+this.getTown();
     }
 }
