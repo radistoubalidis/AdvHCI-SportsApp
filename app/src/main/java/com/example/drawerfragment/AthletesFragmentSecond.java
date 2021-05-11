@@ -24,6 +24,7 @@ public class AthletesFragmentSecond extends Fragment {
         View view = inflater.inflate(R.layout.fragment_athletes_second,container,false);
         Button all = view.findViewById(R.id.showAll);
         Button byNat = view.findViewById(R.id.byNat);
+        Button bySport = view.findViewById(R.id.bySport);
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +43,15 @@ public class AthletesFragmentSecond extends Fragment {
                 ft.commit();
             }
         });
-
+        bySport.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                fm = getActivity().getSupportFragmentManager();
+                ft = fm.beginTransaction();
+                ft.replace(R.id.container_fragment,new ShowAthletesBySport());
+                ft.commit();
+            }
+        });
         return view;
     }
 }

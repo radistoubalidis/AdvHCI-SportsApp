@@ -28,6 +28,6 @@ public interface AthletesDAO {
     @Query("select * from athlites where athlete_sport_id=:sid")
     public List<Athletes> returnBySportAthletes(int sid);
 
-    @Query("select athelete_nat from athlites")
+    @Query("select distinct athelete_nat from athlites")
     public String []  returnNationalities();
 }

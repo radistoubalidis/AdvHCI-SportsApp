@@ -21,18 +21,36 @@ public class TeamFragmentSecond extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teams_second,container,false);
-        tv = view.findViewById(R.id.textView11);
-        String result = "";
-        for(Team t:MainActivity.db.teamDao().getTeams()){
-            String sport ="";
-            for(Sports s:MainActivity.db.sportsDAO().getSports()){
-                if(t.getTID() == s.getID()){
-                    sport = s.getName();
-                }
+        Button all = (Button) view.findViewById(R.id.allTeams);
+        all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container_fragment,new ShowTeams());
+                fragmentTransaction.commit();
             }
-            result += "\nTeam ID: "+t.getID()+"\nName: "+t.getName()+"\nSport: "+sport+"\nStadium: "+t.getStadium()+"\nFrom: "+t.getNational()+", "+t.getTown()+", est. "+t.getEstablishment()+"\n";
-        }
-        tv.setText(result);
+        });
+        Button byNat = (Button) view.findViewById(R.id.byNat);
+        byNat.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container_fragment,new ShowTeamsByNationality());
+                fragmentTransaction.commit();
+            }
+        });
+        Button bySport = (Button) view.findViewById(R.id.bySport);
+        bySport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container_fragment,new ShowTeamsBySport());
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 }
