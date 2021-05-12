@@ -100,7 +100,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.container_fragment,new TeamFragmentSecond());
             fragmentTransaction.commit();
         }
-
+        if(item.getItemId() == R.id.matchups){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment,new MatchupsFragment());
+            fragmentTransaction.commit();
+        }
         //close drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);

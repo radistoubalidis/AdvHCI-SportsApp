@@ -42,5 +42,10 @@
                 />
         </menu>
     </item>
+    <item
+        android:id="@+id/matchups"
+        android:icon="@drawable/ic_sharp_games_24"
+        android:title="Matchups"
+        />
 
 </menu>
