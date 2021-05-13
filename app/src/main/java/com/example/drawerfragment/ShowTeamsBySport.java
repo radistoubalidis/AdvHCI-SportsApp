@@ -44,7 +44,7 @@ public class ShowTeamsBySport extends Fragment {
                     }
                 }
                 for(Team t:MainActivity.db.teamDao().returnTeamsBySport(sid)){
-                    result+= "\nTeam ID: "+t.getID()+"\nName: "+t.getName()+"\nStadium: "+t.getStadium()+"\nFrom: "+t.getTown()+" est."+t.getEstablishment()+"\n";
+                    result+= "\nTeam ID: "+t.getID()+"\nName: "+t.getName()+"\nStadium: "+t.getStadium()+"\nFrom: "+t.getNational()+","+t.getTown()+" est."+t.getEstablishment()+"\n";
                 }
                 teams.setText(result);
             }
