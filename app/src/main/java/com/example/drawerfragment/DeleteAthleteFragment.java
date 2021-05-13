@@ -11,11 +11,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.List;
 
 public class DeleteAthleteFragment extends Fragment {
     View view;
+    FragmentManager fm;
+    FragmentTransaction ft;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class DeleteAthleteFragment extends Fragment {
                 }
             }
         });
+
         return view;
     }
 }
