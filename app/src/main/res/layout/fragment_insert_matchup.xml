@@ -123,7 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et1" />
 
     <TextView
-        android:id="@+id/athletes"
+        android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -154,8 +154,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:text="Athletes Selected: "
         android:textAlignment="center"
         android:textAllCaps="true"
+        android:textColor="#000000"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -165,11 +167,11 @@
         android:id="@+id/addMatcup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="215dp"
         android:text="ADD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et2" />
+        app:layout_constraintTop_toBottomOf="@+id/city" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

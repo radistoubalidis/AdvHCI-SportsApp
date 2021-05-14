@@ -35,6 +35,8 @@ public class DeleteAthleteFragment extends Fragment {
                     if(a.getName().equals(firstName.getText().toString()) && a.getSurname().equals(lastName.getText().toString())){
                         MainActivity.db.athletesDAO().deleteAthlete(a);
                         Toast.makeText(getActivity(),"Athlete Deleted!", Toast.LENGTH_LONG).show();
+                        firstName.setText("");
+                        lastName.setText("");
                     }else{
                         Toast.makeText(getActivity(),"Couldn't find Athlete try Again", Toast.LENGTH_LONG).show();
                     }

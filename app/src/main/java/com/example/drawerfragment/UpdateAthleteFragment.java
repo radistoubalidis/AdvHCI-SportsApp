@@ -53,6 +53,12 @@ public class UpdateAthleteFragment extends Fragment {
                                 a.setTown(athleteHometown.getText().toString());
                                 MainActivity.db.athletesDAO().updateAthlete(sportID,a.getName(),a.getSurname(),a.getTown(),a.getNationality(),aid);
                                 Toast.makeText(getActivity(),"Athlete Updated!", Toast.LENGTH_LONG).show();
+                                athleteID.setText("");
+                                athleteSport.setText("");
+                                athleteFirstName.setText("");
+                                athleteLastName.setText("");
+                                athleteNat.setText("");
+                                athleteHometown.setText("");
                                 for(Athletes at:MainActivity.db.athletesDAO().getAthletes()){
                                     System.out.println(at);
                                 }

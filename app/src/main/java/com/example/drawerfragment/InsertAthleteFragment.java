@@ -47,6 +47,12 @@ public class InsertAthleteFragment extends Fragment {
                     newAthlete.setTown(athleteHometown.getText().toString());
                     MainActivity.db.athletesDAO().addAthlete(newAthlete);
                     Toast.makeText(getActivity(),"Athlete Added!", Toast.LENGTH_LONG).show();
+                    athleteID.setText("");
+                    athleteSport.setText("");
+                    athleteFirstName.setText("");
+                    athleteLastName.setText("");
+                    athleteNat.setText("");
+                    athleteHometown.setText("");
                 }else{
                     Toast.makeText(getActivity(),"Sport wasn't found or athlete id was wrong.Try again!", Toast.LENGTH_LONG).show();
                 }
