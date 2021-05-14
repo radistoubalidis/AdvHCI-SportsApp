@@ -42,6 +42,9 @@ public class UpdateSportFragment extends Fragment {
                         }
                         MainActivity.db.sportsDAO().updateSport(s);
                         Toast.makeText(getActivity(),"Sport Updated!", Toast.LENGTH_LONG).show();
+                        id.setText("");
+                        name.setText("");
+                        type.setText("");
                         break;
                     }
                 }

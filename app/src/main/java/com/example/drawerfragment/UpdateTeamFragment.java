@@ -55,6 +55,12 @@ public class UpdateTeamFragment extends Fragment {
                                 t.setTown(teamHometown.getText().toString());
                                 MainActivity.db.teamDao().updateTeam(t.getTID(),t.getName(),t.getStadium(),t.getTown(),t.getNational(),id);
                                 Toast.makeText(getActivity(),"Team Updated!", Toast.LENGTH_LONG).show();
+                                tid.setText("");
+                                teamName.setText("");
+                                teamSport.setText("");
+                                teamStadium.setText("");
+                                teamNat.setText("");
+                                teamHometown.setText("");
                                 for(Team te:MainActivity.db.teamDao().getTeams()){
                                     System.out.println(te);
                                 }

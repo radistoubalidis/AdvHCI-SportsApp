@@ -5,15 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeleteAthleteFragment">
+    tools:context=".MatchupsFragment">
+
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView13"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/deleteAthlete"
+        android:text="matchups"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="24sp"
@@ -22,44 +23,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/athletefirstName"
+    <Button
+        android:id="@+id/insertMatchup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="type first name here.."
+        android:text="INSERT matchup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <EditText
-        android:id="@+id/athletelastName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="type last name here.."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/athletefirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <Button
-        android:id="@+id/deleteButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/showMatchups"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="@string/delete"
+        android:layout_marginEnd="32dp"
+        android:text="show matchups"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/athletelastName" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/insertMatchup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

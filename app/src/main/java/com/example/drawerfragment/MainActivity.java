@@ -1,6 +1,7 @@
 package com.example.drawerfragment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
 
 
+
         // load default fragment
         fragmentManager = getSupportFragmentManager();
         db = Room.databaseBuilder(getApplicationContext(),SportsDatabase.class, String.valueOf(R.string.DBname)).allowMainThreadQueries().build();
@@ -100,7 +102,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.container_fragment,new TeamFragmentSecond());
             fragmentTransaction.commit();
         }
-
+        if(item.getItemId() == R.id.matchups){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment,new MatchupsFragment());
+            fragmentTransaction.commit();
+        }
         //close drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);
