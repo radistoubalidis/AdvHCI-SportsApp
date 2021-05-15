@@ -201,7 +201,7 @@ public class AddMatchupFragment extends Fragment {
         String team2Text = team2.getText().toString();
         String cityText = city.getText().toString();
         String countryText = country.getText().toString();
-        String sportText = athlima.getText().toString();
+        String sportText = spinner.getSelectedItem().toString();
         String dateText = date.getText().toString();
 
         //Give random score number
@@ -246,7 +246,7 @@ public class AddMatchupFragment extends Fragment {
         Log.d("saveIndividualTeam","Entered!");
         String cityText = city.getText().toString();
         String countryText = country.getText().toString();
-        String sportText = athlima.getText().toString();
+        String sportText = spinner.getSelectedItem().toString();
         String dateText = date.getText().toString();
 
 
