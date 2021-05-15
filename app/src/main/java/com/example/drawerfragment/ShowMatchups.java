@@ -10,7 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class ShowMatchups extends Fragment {
+
+    //Firestore Init
+    private CollectionReference colDocRef = FirebaseFirestore.getInstance().collection("Matchups");
     View view;
     @Nullable
     @Override

@@ -28,31 +28,43 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.w3c.dom.Document;
 
 public class AddMatchupFragment extends Fragment {
     View view;
     FragmentManager fragmentManager;
     FragmentTransaction transaction;
     Spinner spinner,athletesSpinner;
-    EditText team1,team2,date,country,city;
-    TextView athleteInserted,athletes;
-    ArrayList<String>  selectedAthletes = new ArrayList<String>();
+    public EditText team1,team2,date,country,city;
+    public TextView athleteInserted,athletes,athlima;
+    public ArrayList<String>  selectedAthletes = new ArrayList<String>();
     int athletesCounter=0;
     double [] apodoseis = new double [8];
+    public String type;
 
 
     //Constants for Firestore
     public static final String SPORT_KEY = "sport";
     public static final String COUNTRY_KEY = "country";
     public static final String CITY_KEY = "city";
+    public static final String TEAM1_KEY = "team1";
+    public static final String TEAM1_SCORE = "team1_score";
+    public static final String TEAM2_SCORE = "team2_score";
+    public static final String TEAM2_KEY = "team2";
+    public static final String DATE_KEY = "date";
+
+
 
     //Firestore Init
-    private DocumentReference mDocRef = FirebaseFirestore.getInstance().document("androidproj-9ef3f/Agones");
+    private CollectionReference colDocRef = FirebaseFirestore.getInstance().collection("Matchups");
 
     @Nullable
     @Override
@@ -61,12 +73,14 @@ public class AddMatchupFragment extends Fragment {
         spinner =(Spinner) view.findViewById(R.id.spinner);
         Button add = (Button) view.findViewById(R.id.addMatcup);
         // field.getText().toString()
-        EditText date  = (EditText) view.findViewById(R.id.date);
-        EditText country = (EditText) view.findViewById(R.id.country);
-        EditText city = (EditText) view.findViewById(R.id.city);
+
+        date  = (EditText) view.findViewById(R.id.date);
+        country = (EditText) view.findViewById(R.id.country);
+        city = (EditText) view.findViewById(R.id.city);
 
         // dropdown list twn athlitwn
         athletesSpinner = (Spinner) view.findViewById(R.id.athleteSpinner);
+        athlima = (TextView) view.findViewById(R.id.textView14);
         team1 = (EditText) view.findViewById(R.id.et1);
         team2 = (EditText) view.findViewById(R.id.et2);
         athleteInserted = (TextView) view.findViewById(R.id.athletesInserted);
@@ -80,7 +94,7 @@ public class AddMatchupFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String sport = spinner.getSelectedItem().toString();
-                String type = "";
+                type = "";
                 int sid = 0;
                 for(Sports s: MainActivity.db.sportsDAO().getSports()){
                     if(sport.equals(s.getName())){
@@ -107,7 +121,10 @@ public class AddMatchupFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                if (type.equals("Individual")) {
+                    saveIndividualMatch();
+                } else
+                    saveTeamMatch();
             }
         });
 
@@ -178,25 +195,39 @@ public class AddMatchupFragment extends Fragment {
 
     //FIRESTORE ADD MATCHUP SERVICE
 
-    public void saveMatch(View view) {
+    public void saveTeamMatch() {
+        Log.d("saveTeam","Entered!");
+        String team1Text = team1.getText().toString();
+        String team2Text = team2.getText().toString();
+        String cityText = city.getText().toString();
+        String countryText = country.getText().toString();
+        String sportText = athlima.getText().toString();
+        String dateText = date.getText().toString();
 
-//        EditText cityView = (EditText) findViewById(R.id.editTextCity);
-//        EditText countryView = (EditText) findViewById(R.id.editTextCountry);
-//        EditText sportView = (EditText) findViewById(R.id.editTextSport);
-//        String cityText = cityView.toString();
-//        String countryText = countryView.toString();
-//        String sportText = sportView.toString();
+        //Give random score number
+        Random random = new Random();
+        int team1Score = random.nextInt(10);
+        int team2Score = random.nextInt(10);
 
 
 
-//        if (cityText.isEmpty() || countryText.isEmpty() || sportText.isEmpty()) { return; }
+
+        if (cityText.isEmpty() || countryText.isEmpty() || sportText.isEmpty() || team1Text.isEmpty() || team2Text.isEmpty()) { return; }
         Map<String, Object> dataToSave = new HashMap<String, Object>();
 
-        //Key value pairs with constants
-//        dataToSave.put(CITY_KEY, cityText);
-//        dataToSave.put(COUNTRY_KEY, countryText);
-//        dataToSave.put(SPORT_KEY, sportText);
-        mDocRef.set(dataToSave).addOnSuccessListener(new OnSuccessListener<Void>() {
+       // Key value pairs with constants
+        dataToSave.put(TEAM1_KEY, team1Text);
+        dataToSave.put(TEAM1_SCORE, team1Score);
+        dataToSave.put(TEAM2_KEY, team2Text);
+        dataToSave.put(TEAM2_SCORE, team2Score);
+        dataToSave.put(CITY_KEY, cityText);
+        dataToSave.put(COUNTRY_KEY, countryText);
+        dataToSave.put(SPORT_KEY, sportText);
+        dataToSave.put(DATE_KEY, dateText);
+
+        DocumentReference matchDocRef = colDocRef.document();
+
+        matchDocRef.set(dataToSave).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d("City","Sport");
@@ -207,6 +238,49 @@ public class AddMatchupFragment extends Fragment {
                 Log.w("City","Document wasn't saved");
             }
         });
+
+
+    }
+
+    public void saveIndividualMatch() {
+        Log.d("saveIndividualTeam","Entered!");
+        String cityText = city.getText().toString();
+        String countryText = country.getText().toString();
+        String sportText = athlima.getText().toString();
+        String dateText = date.getText().toString();
+
+
+
+
+        if (cityText.isEmpty() || countryText.isEmpty() || sportText.isEmpty() ) { return; }
+        Map<String, Object> dataToSave = new HashMap<String, Object>();
+
+        // Key value pairs with constants
+        dataToSave.put(CITY_KEY, cityText);
+        dataToSave.put(COUNTRY_KEY, countryText);
+        dataToSave.put(SPORT_KEY, sportText);
+        dataToSave.put(DATE_KEY, dateText);
+
+        DocumentReference matchDocRef = colDocRef.document();
+
+        matchDocRef.set(dataToSave).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("Saved","Success");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w("Nope","Document wasn't saved");
+            }
+        });
+
+        //Update document to add Athletes Key-Value pair Like
+        for (int i=0; i<athletesCounter;i++) {
+            matchDocRef.update(selectedAthletes.get(i), apodoseis[i]);
+        }
+
+
 
 
     }
