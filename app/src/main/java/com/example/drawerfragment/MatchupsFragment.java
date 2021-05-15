@@ -22,12 +22,22 @@ public class MatchupsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_matchups,container, false);
         Button insert = (Button) view.findViewById(R.id.insertMatchup);
+        Button show = (Button) view.findViewById(R.id.showMatchups);
         insert.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 fm = getActivity().getSupportFragmentManager();
                 ft = fm.beginTransaction();
                 ft.replace(R.id.container_fragment,new AddMatchupFragment());
+                ft.commit();
+            }
+        });
+        show.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                fm = getActivity().getSupportFragmentManager();
+                ft = fm.beginTransaction();
+                ft.replace(R.id.container_fragment,new ShowMatchups());
                 ft.commit();
             }
         });
