@@ -25,7 +25,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class AddMatchupFragment extends Fragment {
     View view;
@@ -38,6 +45,14 @@ public class AddMatchupFragment extends Fragment {
     int athletesCounter=0;
     double [] apodoseis = new double [8];
 
+
+    //Constants for Firestore
+    public static final String SPORT_KEY = "sport";
+    public static final String COUNTRY_KEY = "country";
+    public static final String CITY_KEY = "city";
+
+    //Firestore Init
+    private DocumentReference mDocRef = FirebaseFirestore.getInstance().document("androidproj-9ef3f/Agones");
 
     @Nullable
     @Override
@@ -160,5 +175,41 @@ public class AddMatchupFragment extends Fragment {
             }
         });
     }
+
+    //FIRESTORE ADD MATCHUP SERVICE
+
+    public void saveMatch(View view) {
+
+//        EditText cityView = (EditText) findViewById(R.id.editTextCity);
+//        EditText countryView = (EditText) findViewById(R.id.editTextCountry);
+//        EditText sportView = (EditText) findViewById(R.id.editTextSport);
+//        String cityText = cityView.toString();
+//        String countryText = countryView.toString();
+//        String sportText = sportView.toString();
+
+
+
+//        if (cityText.isEmpty() || countryText.isEmpty() || sportText.isEmpty()) { return; }
+        Map<String, Object> dataToSave = new HashMap<String, Object>();
+
+        //Key value pairs with constants
+//        dataToSave.put(CITY_KEY, cityText);
+//        dataToSave.put(COUNTRY_KEY, countryText);
+//        dataToSave.put(SPORT_KEY, sportText);
+        mDocRef.set(dataToSave).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("City","Sport");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w("City","Document wasn't saved");
+            }
+        });
+
+
+    }
+
 
 }
